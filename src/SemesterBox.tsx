@@ -1,16 +1,25 @@
 import SemesterButton from "./SemesterButton.tsx";
 import Semester from "./Semester.tsx";
 import React, { useState } from "react";
+import {average} from "./Average.ts";
+import GradeComponent from "./GradeComponent.tsx";
 
 export function SemesterBox() {
-    const [semesters, setSemesters] = useState<number[]>([]);
+    const [semesters, setSemesters] = useState<Array<number | null>>([]);
 
-    const onAddSemesterGrade = (grade: number, semesterIndex: number) => {
-        console.log(`Adding grade ${grade} for semester ${semesterIndex}`);
+    console.log(semesters)
+    const onAddSemesterGrade = (grade: number | null, semesterIndex: number) => {
+        setSemesters((p) => p.map((semester, index) => {
+            if (index === semesterIndex) {
+                return grade;
+            } else {
+                return semester;
+            }
+        }))
     };
 
     const addNewSemester = () => {
-        setSemesters((previousSemesters) => [...previousSemesters, 0]);
+        setSemesters((previousSemesters) => [...previousSemesters, null]);
     };
 
     return (
@@ -23,16 +32,7 @@ export function SemesterBox() {
                         </h2>
                     </div>
                     <div className="mt-4 flex md:ml-4 md:mt-0">
-                        <span className="inline-flex items-center gap-x-1.5 rounded-md px-3 py-1 text-lg font-bold text-gray-900 ring-1 ring-inset ring-gray-200">
-                            <svg
-                                className="h-1.5 w-1.5 fill-green-500"
-                                viewBox="0 0 6 6"
-                                aria-hidden="true"
-                            >
-                                <circle cx="3" cy="3" r="3" />
-                            </svg>
-                            5.5
-                        </span>
+                        <GradeComponent grade={average(semesters)} bold />
                     </div>
                 </div>
 

@@ -2,12 +2,15 @@ import React from 'react';
 import classnames from 'classnames';
 
 interface GradeComponentProps {
-    grade: number;
+    grade: number | null;
     bold?: boolean;
     big?: boolean;
 }
 
 const GradeComponent: React.FC<GradeComponentProps> = ({ grade, bold = false, big = false }) => {
+
+    if (grade === null) return <></>
+
     const classNames = classnames(
         'inline-flex items-center gap-x-1.5 rounded-md px-2 py-2 text-gray-900 ring-1 ring-inset ring-gray-200',
         { 'font-bold': bold, 'font-medium': !bold, 'px-3 py-1 text-lg': big, 'px-2 py-2 text-sm': !big }
