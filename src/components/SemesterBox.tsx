@@ -1,8 +1,8 @@
 import SemesterButton from "./SemesterButton.tsx";
-import Semester from "./Semester.tsx";
+import Semester from "./SemestersBox/Semester.tsx";
 import React, { useState } from "react";
-import {average} from "../../Average.ts";
-import GradeComponent from "./GradeComponent.tsx";
+import {average} from "../Average.ts";
+import GradeComponent from "./SemestersBox/GradeComponent.tsx";
 
 export function SemesterBox() {
     const [semesters, setSemesters] = useState<Array<number | null>>([]);

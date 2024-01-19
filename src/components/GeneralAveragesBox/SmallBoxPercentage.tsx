@@ -1,5 +1,10 @@
 import React from "react";
 
-export function SmallBoxPercentage() {
-    return <dd className="text-xs font-medium text-green-600">+54.02%</dd>;
+interface Props {
+    percentage: string
+}
+export function SmallBoxPercentage({percentage}: Props) {
+    return (
+    <dd className="text-xs font-medium text-green-600">{percentage}</dd>
+    );
 }

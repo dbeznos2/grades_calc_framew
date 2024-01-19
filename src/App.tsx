@@ -1,5 +1,5 @@
 import React from "react";
-import SemesterBox from "./components/SemestersBox/SemesterBox.tsx";
+import SemesterBox from "./components/SemesterBox.tsx";
 import GeneralAveragesBox from "./components/GeneralAveragesBox/GeneralAveragesBox.tsx";
 import { HeaderComponent } from "./components/navbar/HeaderComponent.tsx";
 
