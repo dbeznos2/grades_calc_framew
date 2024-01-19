@@ -1,7 +1,7 @@
 import GradeComponent from "./GradeComponent.tsx";
 import { GradeInput } from "./GradeInput.tsx";
 import React, { useEffect, useState } from "react";
-import { average } from "./Average.ts";
+import { average } from "../../Average.ts";
 
 interface SemesterProps {
   onAddSemesterGrade: (average: number | null) => void;
@@ -9,7 +9,6 @@ interface SemesterProps {
 }
 
 export function Semester({ onAddSemesterGrade, semesterIndex }: SemesterProps) {
-
     const [semesterGrades, setSemesterGrades] = useState<number[]>([]);
 
     const addNewGrade = (grade: number) => {

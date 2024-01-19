@@ -1,7 +1,7 @@
 import SemesterButton from "./SemesterButton.tsx";
 import Semester from "./Semester.tsx";
 import React, { useState } from "react";
-import {average} from "./Average.ts";
+import {average} from "../../Average.ts";
 import GradeComponent from "./GradeComponent.tsx";
 
 export function SemesterBox() {

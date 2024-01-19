@@ -1,6 +1,6 @@
 export function average(grades: Array<number | null>): number | null {
 
-        const filteredArray = grades.filter(g => g !== null)
+        const filteredArray = grades.filter((g): g is number => g !== null)
 
         if (filteredArray.length < 1) {
                 return null;
