@@ -4,7 +4,7 @@ import Semester from "./SemestersBox/Semester.tsx";
 import useGradeStore from "./gradesStore.ts";
 import GradeComponent from "./SemestersBox/GradeComponent.tsx";
 
-export function SemesterBox() {
+export function SemesterBox({subject}: {subject:string}) {
     const [semesters, setSemesters] = useState<Array<number | null>>([]);
 
     /*access the setSemesters*/
@@ -38,7 +38,7 @@ export function SemesterBox() {
                 <div className="md:flex md:items-center md:justify-between">
                     <div className="min-w-0 flex-1">
                         <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
-                            Mathématiques
+                            {subject}
                         </h2>
                     </div>
                     <div className="mt-4 flex md:ml-4 md:mt-0">

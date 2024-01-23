@@ -8,9 +8,8 @@ export function NavbarBranches() {
                 <div className="col-span-2">
                     <nav className="flex space-x-4">
                         <NavComponent branch={"Maths"}/>
-                        <NavComponent branch={"Société"}/>
+                        <NavComponent branch={"Societe"}/>
                         <NavComponent branch={"Anglais"}/>
-                        <NavComponent branch={"Informatique"}/>
                         <NavComponent branch={"Modules"}/>
                         <NavComponent branch={"CIE"}/>
                     </nav>

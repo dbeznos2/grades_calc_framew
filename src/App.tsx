@@ -1,7 +1,7 @@
 import React from "react";
-import SemesterBox from "./components/SemesterBox.tsx";
 import GeneralAveragesBox from "./components/GeneralAveragesBox/GeneralAveragesBox.tsx";
 import { HeaderComponent } from "./components/navbar/HeaderComponent.tsx";
+import {Outlet} from "react-router-dom";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
                 <h2 className="sr-only" id="section-1-title">
                   Grades
                 </h2>
-                <SemesterBox />
+                <Outlet/>
               </section>
             </div>
             <GeneralAveragesBox />
