@@ -6,9 +6,16 @@ import GradeComponent from "./SemestersBox/GradeComponent.tsx";
 
 export function SemesterBox() {
     const [semesters, setSemesters] = useState<Array<number | null>>([]);
+
+    /*access the setSemesters*/
     const setSemestersInStore = useGradeStore((state) => state.setSemesters);
+
+    /*access the maths property*/
     const mathsAverage = useGradeStore((state) => state.maths);
 
+
+
+    /* updating the semesters*/
     useEffect(() => {
         setSemestersInStore(semesters.filter((value) => value !== null) as number[]);
     }, [semesters, setSemestersInStore]);

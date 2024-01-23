@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { NavbarBranches } from "./NavbarBranches.tsx";
 import { CapIconComponent } from "./CapIconComponent.tsx";
 import { RefreshButtonComponent } from "./RefreshButtonComponent.tsx";
