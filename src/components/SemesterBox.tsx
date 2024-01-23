@@ -1,21 +1,24 @@
+import React, { useEffect, useState } from "react";
 import SemesterButton from "./SemesterButton.tsx";
 import Semester from "./SemestersBox/Semester.tsx";
-import React, { useState } from "react";
-import {average} from "../Average.ts";
+import useGradeStore from "./gradesStore.ts";
 import GradeComponent from "./SemestersBox/GradeComponent.tsx";
 
 export function SemesterBox() {
     const [semesters, setSemesters] = useState<Array<number | null>>([]);
+    const setSemestersInStore = useGradeStore((state) => state.setSemesters);
+    const mathsAverage = useGradeStore((state) => state.maths);
 
-    console.log(semesters)
+    useEffect(() => {
+        setSemestersInStore(semesters.filter((value) => value !== null) as number[]);
+    }, [semesters, setSemestersInStore]);
+
     const onAddSemesterGrade = (grade: number | null, semesterIndex: number) => {
-        setSemesters((p) => p.map((semester, index) => {
-            if (index === semesterIndex) {
-                return grade;
-            } else {
-                return semester;
-            }
-        }))
+        setSemesters((previousSemesters) =>
+            previousSemesters.map((semester, index) =>
+                index === semesterIndex ? grade : semester
+            )
+        );
     };
 
     const addNewSemester = () => {
@@ -32,14 +35,18 @@ export function SemesterBox() {
                         </h2>
                     </div>
                     <div className="mt-4 flex md:ml-4 md:mt-0">
-                        <GradeComponent grade={average(semesters)} bold />
+                        <GradeComponent grade={mathsAverage} bold />
                     </div>
                 </div>
 
                 <div className="mt-6 border-t border-gray-100">
                     <dl className="divide-y divide-gray-100">
                         {semesters.map((_, index) => (
-                            <Semester key={index} onAddSemesterGrade={(grade) => onAddSemesterGrade(grade, index)} semesterIndex={index} />
+                            <Semester
+                                key={index}
+                                onAddSemesterGrade={(grade) => onAddSemesterGrade(grade, index)}
+                                semesterIndex={index}
+                            />
                         ))}
                         <SemesterButton onAddSemester={addNewSemester} />
                     </dl>
@@ -50,4 +57,3 @@ export function SemesterBox() {
 }
 
 export default SemesterBox;
-
